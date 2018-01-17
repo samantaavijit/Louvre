@@ -39,6 +39,12 @@ public class MediaSharedElementCallback extends SharedElementCallback {
 
     public void setSharedElementViews(@NonNull View... sharedElementViews) {
         mSharedElementViews.clear();
+        for (View sharedElementView : mSharedElementViews) {
+            if (sharedElementView == null) {
+                throw new IllegalArgumentException("Shared element should not be null");
+            }
+            mSharedElementViews.add(sharedElementView);
+        }
         mSharedElementViews.addAll(Arrays.asList(sharedElementViews));
     }
 
